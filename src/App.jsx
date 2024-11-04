@@ -1,6 +1,6 @@
 //import * as React from "react";
 
-import SearchMovie from "./SearchMovies";
+import SearchMovie from "./components/SearchMovies";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <h1 className="title">Movie Search App</h1>
-      <SearchMovie/>
+      <SearchMovie />
     </div>
   );
 }

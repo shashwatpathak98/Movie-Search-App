@@ -1,21 +1,16 @@
-import searchMoviesAPI from "./api/searchMovies";
+import searchMoviesAPI from "../api/searchMovies";
 
 function SearchMovie() {
+  async function searchMovies(event) {
+    event.preventDefault();
+    console.log("submitting");
 
+    const query = "tiger";
+    const results = await searchMoviesAPI(query);
+    console.log(results);
+  }
 
-async function searchMovies(event){
-      event.preventDefault();
-      console.log("submitting");
-
-      const query = "Jurassic Park";
-      searchMoviesAPI(query);
-      
-}
-  
   return (
-
-
-
     <form className="form" onSubmit={searchMovies}>
       <label className="label" htmlFor="query">
         Movie Name
