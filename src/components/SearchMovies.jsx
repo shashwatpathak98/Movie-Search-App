@@ -1,6 +1,7 @@
 import { useState } from "react";
 import searchMoviesAPI from "../api/searchMovies";
 import MovieCard from "./MovieCard";
+import Loader from "../../public/loader.gif";
 
 function SearchMovie() {
   const [query, setQuery] = useState("");
@@ -9,9 +10,10 @@ function SearchMovie() {
   const [totalPages, setTotalPages] = useState(0);
   const [activePage, setActivePage] = useState(1);
   const [isMovieFound, setIsMovieFound] = useState(true);
-  const [displayButton ,setDisplayButton] = useState(false);
+  const [displayButton, setDisplayButton] = useState(false);
+  const [loading , setLoading] = useState(false);
 
-  const maxPageDisplay = 5;
+  const maxPageDisplay = window.innerWidth <= 768 ? 3 : 5;
 
   function calculatePageRange(currentPage, totalPages, maxPageDisplay) {
     let startPage, endPage;
@@ -44,12 +46,14 @@ function SearchMovie() {
   }
 
   async function searchMovies(number) {
+    setLoading(true);
     const results = await searchMoviesAPI(query, number);
     if (!results) {
       setIsMovieFound(false); // Set isMovieFound to false if no results are returned
       setMovies([]);
       setTotalPages(0);
     } else {
+      setLoading(false);
       setMovies(results.results);
       setTotalPages(results.total_pages);
       setIsMovieFound(results.results.length > 0); // Set isMovieFound to true if movies are found, false otherwise
@@ -60,7 +64,9 @@ function SearchMovie() {
     event.preventDefault();
     if (query !== "") {
       searchMovies(1);
-      setDisplayButton(true);
+      setTimeout(() => {
+        setDisplayButton(true);
+      }, 1200);
     }
   }
   function nextPage() {
@@ -94,7 +100,7 @@ function SearchMovie() {
         </label>
         <input
           className="input"
-          type="text"
+          type="search"
           name="query"
           placeholder="i.e. Jurrasic Park"
           onChange={(event) => setQuery(event.target.value)}
@@ -120,8 +126,7 @@ function SearchMovie() {
         >
           Not Found ... Please Search Again
         </p>
-      ) : (
-        displayButton ? (
+      ) : displayButton ? (
         <div>
           {query !== "" ? (
             <div className="pagination">
@@ -135,8 +140,13 @@ function SearchMovie() {
           ) : (
             ""
           )}
-        </div>):("")
-  )}
+        </div>
+      ) : (
+    loading &&
+        <div style={{display: "flex" , justifyContent:"center", margin:"32px"}}>
+          <img src={Loader} width={150} />
+        </div>
+      )}
 
       {!isMovieFound ? (
         ""
