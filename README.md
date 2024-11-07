@@ -2,6 +2,11 @@
 
 This is a simple movie rating app built with React and Material-UI. It fetches movie data from an API and displays it in a list. Each movie has a rating displayed using the Material-UI Rating component.
 
+## Try it Live
+
+You can try the application live at [https://movie-search-xnop47kkm-shashwatpathak98s-projects.vercel.app/](https://movie-search-xnop47kkm-shashwatpathak98s-projects.vercel.app/)
+
+
 ## Features
 
 - Fetches movie data from an API
