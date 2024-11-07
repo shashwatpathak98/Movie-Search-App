@@ -2,6 +2,8 @@
 // eslint-disable-next-line react/prop-types
 import Rating from "@mui/material/Rating";
 function movieDetailsCard({ movieDetails }) {
+
+    const roundedRating = Math.ceil(movieDetails.vote_average * 2) / 2;
   return (
     <div className="card" key={movieDetails.id}>
       <a
@@ -31,7 +33,7 @@ function movieDetailsCard({ movieDetails }) {
          
             <Rating
                 name="read-only"
-                value={movieDetails.vote_average}
+                value={roundedRating}
                 precision={0.5}
                 max={10}
                 readOnly
