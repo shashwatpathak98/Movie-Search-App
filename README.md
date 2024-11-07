@@ -4,8 +4,7 @@ This is a simple movie rating app built with React and Material-UI. It fetches m
 
 ## Try it Live
 
-You can try the application live at [https://movie-search-xnop47kkm-shashwatpathak98s-projects.vercel.app/](https://movie-search-xnop47kkm-shashwatpathak98s-projects.vercel.app/)
-
+You can try the application live at [https://movie-search-app-eight-eta.vercel.app/](https://movie-search-app-eight-eta.vercel.app/)
 
 ## Features
 
