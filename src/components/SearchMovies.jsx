@@ -1,7 +1,7 @@
 import { useState } from "react";
 import searchMoviesAPI from "../api/searchMovies";
 import MovieCard from "./MovieCard";
-import Loader from "../../public/loader.gif";
+import Loader from "../images/loader.gif";
 
 function SearchMovie() {
   const [query, setQuery] = useState("");
@@ -166,7 +166,7 @@ function SearchMovie() {
                   onClick={() => goToPage(pageNumber)}
                   style={
                     pageNumber === activePage
-                      ? { backgroundColor: "#f0f024" }
+                      ? { backgroundColor: "#C79881" }
                       : {}
                   }
                 >

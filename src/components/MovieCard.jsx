@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
+import Rating from "@mui/material/Rating";
 function movieDetailsCard({ movieDetails }) {
   return (
     <div className="card" key={movieDetails.id}>
@@ -19,15 +20,30 @@ function movieDetailsCard({ movieDetails }) {
       </a>
       <div className="card--content">
         <div className="card--center">
-        <h2 className="card--title">{movieDetails.title}</h2>
-        <p>
-          <small>RELEASE DATE: {movieDetails.release_date}</small>
-        </p>
-        <p>
-          <small>RATING: {movieDetails.vote_average}</small>
-        </p>
-       
-        <p className="card--desc">{movieDetails.overview}</p>
+          <h2 className="card--title">{movieDetails.title}</h2>
+          <p>
+            <small>RELEASE DATE: {movieDetails.release_date}</small>
+          </p>
+          <p className="rating--card">
+          <small style={{display:"flex" , justifyContent:"center", alignContent:"center", gap:"1rem"}}>
+          RATING:
+          <small> {movieDetails.vote_average}</small>
+         
+            <Rating
+                name="read-only"
+                value={movieDetails.vote_average}
+                precision={0.5}
+                max={10}
+                readOnly
+              />
+             
+              
+             
+              
+            </small>
+          </p>
+
+          <p className="card--desc">{movieDetails.overview}</p>
         </div>
       </div>
     </div>
