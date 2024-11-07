@@ -11,7 +11,7 @@ function SearchMovie() {
   const [activePage, setActivePage] = useState(1);
   const [isMovieFound, setIsMovieFound] = useState(true);
   const [displayButton, setDisplayButton] = useState(false);
-  const [loading , setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const maxPageDisplay = window.innerWidth <= 768 ? 3 : 5;
 
@@ -102,7 +102,7 @@ function SearchMovie() {
           className="input"
           type="search"
           name="query"
-          placeholder="i.e. Jurrasic Park"
+          placeholder="i.e. Jurassic Park"
           onChange={(event) => setQuery(event.target.value)}
         />
         <button className="button" type="submit" disabled={query.trim() === ""}>
@@ -142,10 +142,17 @@ function SearchMovie() {
           )}
         </div>
       ) : (
-    loading &&
-        <div style={{display: "flex" , justifyContent:"center", margin:"32px"}}>
-          <img src={Loader} width={150} />
-        </div>
+        loading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "32px",
+            }}
+          >
+            <img src={Loader} width={150} />
+          </div>
+        )
       )}
 
       {!isMovieFound ? (
